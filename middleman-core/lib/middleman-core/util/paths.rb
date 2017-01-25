@@ -84,12 +84,14 @@ module Middleman
         app.config[:images_dir]
       when :fonts
         app.config[:fonts_dir]
+      when :videos
+        app.config[:videos_dir]
       else
         kind.to_s
       end
 
       source = source.to_s.tr(' ', '')
-      ignore_extension = (kind == :images || kind == :fonts) # don't append extension
+      ignore_extension = (kind == :images || kind == :fonts || kind == :videos)
       source << ".#{kind}" unless ignore_extension || source.end_with?(".#{kind}")
       asset_folder = '' if source.start_with?('/') # absolute path
 
